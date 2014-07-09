@@ -1,6 +1,14 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: black;
+  color: red;
+}
 
 a {
   color: #00B7FF; }
+
+.logohead {
+  font-size: 200%;
+  text-align: center;
+  background: #664400;
+}
