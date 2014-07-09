@@ -1,2 +1,3 @@
-forest fire watch node app
+$ npm install
+$ bundle --path gems --binstubs
 
