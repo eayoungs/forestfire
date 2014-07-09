@@ -1,4 +1,8 @@
 /node_modules/
+/gems/
+/bin/
+/.bundle
+Gemfile.lock
 *.sublime-project
 *.sublime-workspace
 
