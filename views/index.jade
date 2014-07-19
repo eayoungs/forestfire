@@ -3,12 +3,26 @@ extends layout
 block content
   div.logohead Wildfire Watch
 
-  p Regions
-  ul
-    li Washingtoning
-    li Oregon
-    li California
+  p Active Fires
+  ul.active_fires
+
+  script(type="dust").
+    <li>
+      I am dust
+    </li>
 
   script.
-    console.log('presetuped')
-    forestfire.setup()
+    forestfire.setup(function(){
+      var features = forestfire.fires().features
+      for(var idx in features) {
+        var fire = features[idx]
+        var template = jQuery('script[type="dust"]').text()
+        console.log(template)
+        var tmpl = dust.compileFn(template, "active_fires")
+        dust.render("active_fires", {}, function(err,out){
+          console.log('appending '+err)
+          jQuery('.active_fires').append(out)
+        })
+      }
+
+    })
