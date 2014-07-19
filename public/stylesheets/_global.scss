@@ -1,10 +1,41 @@
 // All non printing style goes here
 // variables, functions, mixins, extends
 
+// colors by name
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray: #888888;
+
+// colors by category
+$colors-kind: (
+  primary: $color-black,
+  secondary: $color-white,
+  tertiary: $color-gray,
+);
+$colors-application: (
+  color: applyColor('primary'),
+  link: applyColor('tertiary'),
+);
 
 
+$font-trebuchet: ("Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif);
 
-@mixin group() {
+$size-vertical: 2.5em;
+
+@function map($targetMap, $mapList) {
+  $mapItem: $targetMap;
+  @each $mapPart in $mapList {
+    $mapItem: map-get($mapItem, $mapPart);
+  }
+  @return $mapItem;
+}
+@function color($colorTree) {
+  @return map($colors-application, $colorTree);
+}
+@function applyColor($colorTree) {
+  @return map($colors-kind, $colorTree);
+}
+@mixin group {
   &:after {
     content: "";
     display: table;

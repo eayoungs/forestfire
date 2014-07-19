@@ -1,1 +1,32 @@
-// Styles that apply to individual elements
+// CONTENT
+// This file contains all layout settings.
+// Layout is as anything that affects horizontal movement.
+
+
+
+.site_main {
+  @include content_full;
+}
+.cols {
+  @include content_center;
+}
+.col {
+  @include bp-layout(small) {
+    @include span(1);
+    &:nth-child(5n + 1) {
+      margin-left: 0;
+    }
+  }
+  @include bp-layout(medium) {
+    @include span(1);
+    &:nth-child(8n + 1) {
+      margin-left: 0;
+    }
+  }
+  @include bp-layout(large) {
+    @include span(1);
+    &:nth-child(16n + 1) {
+      margin-left: 0;
+    }
+  }
+}

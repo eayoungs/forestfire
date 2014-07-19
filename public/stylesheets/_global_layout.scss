@@ -1,0 +1,76 @@
+// This file contains all non printing layout styles
+
+// $breakpoint-no-queries: false;
+$breakpoint-no-query-fallbacks: true;
+$susy: (
+  gutters: 0.2,
+  gutter-position: before
+);
+
+$layouts: (
+  small: (
+    break: 0em 37.5em,
+    grid: (
+      columns: 5,
+    )
+  ),
+  medium: (
+    break: 37.5em 62em,
+    grid: (
+      columns: 8,
+    )
+  ),
+  medium-andup: (
+    break: 37.5em,
+    grid: (
+      columns: 16,
+    ),
+    fallback: ".oldie"
+  ),
+  large: (
+    break: 62em,
+    grid: (
+      columns: 16,
+    ),
+    fallback: ".oldie"
+  )
+);
+@mixin bp-layout($break-name) {
+  $layout: map-get($layouts, $break-name);
+  @if map-has-key($layout, "fallback") {
+    @include susy-breakpoint(map-get($layout, "break"), map-get($layout, "grid"), map-get($layout, "fallback")) {
+      @content;
+    }
+  } @else {
+    @include susy-breakpoint(map-get($layout, "break"), map-get($layout, "grid")) {
+      @content;
+    }
+  }
+}
+@mixin bp($break-name) {
+  $layout: map-get($layouts, $break-name);
+  @if map-has-key($layout, "fallback") {
+    @include breakpoint(map-get($layout, "break"), map-get($layout, "fallback")) {
+      @content;
+    }
+  } @else {
+    @include breakpoint(map-get($layout, "break")) {
+      @content;
+    }
+  }
+}
+@mixin content_full {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 0;
+  width: 100%;
+  @include group;
+}
+@mixin content_center {
+// max width 1030px -> 64.375 em
+  margin: 0 auto;
+  max-width: 65.375em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  @include group;
+}
