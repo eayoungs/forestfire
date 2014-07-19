@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         autoprefixer: {
             dist: {
                 files: {
-                    'public/css/main.css': '.tmp/main.css'
+                    'public/stylesheets/style.css': '.tmp/style.css'
                 }
             }
         },
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
                 livereload: true,
             },
             css: {
-                files: ['css/sass/**/*.scss'],
+                files: ['public/stylesheets/**/*.scss'],
                 tasks: ['compass', 'autoprefixer'],
                 options: {
                     spawn: false,

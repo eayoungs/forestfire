@@ -7,4 +7,5 @@ Gemfile.lock
 *.sublime-workspace
 
 */**/.sass-cache
+/.sass-cache/
 /.tmp/
