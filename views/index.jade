@@ -3,23 +3,26 @@ extends layout
 block content
   div.logohead Wildfire Watch
 
-  p Active Fires
+  p
+    span#fire_count
+    | Active Fires
   ul.active_fires
 
   script(type="dust").
     <li>
-      I am dust
+      {name}
     </li>
 
   script.
     forestfire.setup(function(){
+      var template = jQuery('script[type="dust"]').text()
+      dust.compileFn(template, "active_fires")
       var features = forestfire.fires().features
+      jQuery('#fire_count').html(features.length)
       for(var idx in features) {
         var fire = features[idx]
-        var template = jQuery('script[type="dust"]').text()
-        console.log(template)
-        var tmpl = dust.compileFn(template, "active_fires")
-        dust.render("active_fires", {}, function(err,out){
+        var data = {name:fire.properties.name}
+        dust.render("active_fires", data, function(err,out){
           console.log('appending '+err)
           jQuery('.active_fires').append(out)
         })
