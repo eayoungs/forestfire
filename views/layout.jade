@@ -3,7 +3,12 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='//cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js')
+    script(src='/javascripts/code.js')
   body
     block content
 
     include google-analytics
+
+script.
+  jQuery.ajax('/fires.json')
