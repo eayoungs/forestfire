@@ -2,10 +2,8 @@
 /gems/
 /bin/
 /.bundle
+/.tmp
 Gemfile.lock
 *.sublime-project
 *.sublime-workspace
-
-*/**/.sass-cache
-/.sass-cache/
-/.tmp/
+.sass-cache
